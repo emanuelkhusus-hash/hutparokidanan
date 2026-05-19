@@ -1021,6 +1021,54 @@
 
           <!-- STEP 1: IDENTITAS -->
           <div class="step-container active" id="step-1">
+            <!-- Rekening Pembayaran (Elegan Premium) -->
+            <div class="form-group" style="margin-bottom: 28px;">
+              <p style="font-size: 13.5px; color: var(--gray-600); margin-bottom: 12px; line-height: 1.5; text-align: center; font-weight: 500;">
+                Pembayaran donasi dapat ditransfer langsung ke rekening resmi Paroki berikut:
+              </p>
+              
+              <div style="background: linear-gradient(135deg, #1e1b4b 0%, #0f0c31 100%); border: 2px solid var(--gold); border-radius: var(--radius-lg); padding: 24px; color: var(--white); position: relative; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(30, 27, 75, 0.35); display: flex; flex-direction: column; gap: 16px;">
+                
+                <!-- Gold Accent lines overlay -->
+                <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; border: 2px solid rgba(191, 149, 63, 0.08); border-radius: 50%; pointer-events: none;"></div>
+                <div style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; border: 2px solid rgba(191, 149, 63, 0.08); border-radius: 50%; pointer-events: none;"></div>
+                
+                <!-- Card Header (Bank Logo & Simbol Chip) -->
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-family-title); font-size: 16px; font-weight: 700; color: var(--gold-light); letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;">
+                    <i class="fa-solid fa-church" style="color: var(--gold); font-size: 18px;"></i> GEREJA ST. IGNATIUS DANAN
+                  </span>
+                  <div style="background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); width: 38px; height: 28px; border-radius: 6px; position: relative; box-shadow: inset 0 1px 3px rgba(255,255,255,0.3);">
+                    <!-- chip pattern lines -->
+                    <div style="position: absolute; top: 0; left: 12px; width: 1px; height: 28px; background: rgba(0,0,0,0.15); pointer-events: none;"></div>
+                    <div style="position: absolute; top: 0; left: 24px; width: 1px; height: 28px; background: rgba(0,0,0,0.15); pointer-events: none;"></div>
+                    <div style="position: absolute; top: 10px; left: 0; width: 38px; height: 1px; background: rgba(0,0,0,0.15); pointer-events: none;"></div>
+                    <div style="position: absolute; top: 18px; left: 0; width: 38px; height: 1px; background: rgba(0,0,0,0.15); pointer-events: none;"></div>
+                  </div>
+                </div>
+
+                <!-- Account Number (Monospace Large) -->
+                <div style="margin: 4px 0;">
+                  <span style="font-size: 9.5px; color: rgba(255, 255, 255, 0.4); font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; display: block; margin-bottom: 6px;">Nomor Rekening (BRI)</span>
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                    <strong style="font-size: 21px; color: var(--gold-light); font-family: 'Courier New', Courier, monospace; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">3594-01-013441-53-8</strong>
+                    <button type="button" id="btn-copy-acc" style="background: linear-gradient(135deg, var(--gold) 0%, var(--gold-hover) 100%); color: #451a03; border: 1px solid var(--gold); border-radius: var(--radius-sm); padding: 8px 16px; font-size: 11px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); transition: var(--transition-normal); font-family: var(--font-family-body); text-transform: uppercase; letter-spacing: 0.5px;">
+                      <i class="fa-solid fa-copy"></i> Salin Rekening
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Card Footer (Account Owner Name) -->
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 12px; display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <span style="font-size: 9.5px; color: rgba(255, 255, 255, 0.4); font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; display: block; margin-bottom: 2px;">Atas Nama (A.N.)</span>
+                    <strong style="font-size: 14px; color: var(--white); font-weight: 600; letter-spacing: 0.5px;">PGPM GEREJA ST. IGNATIUS DANAN</strong>
+                  </div>
+                  <span style="font-family: var(--font-family-title); font-size: 18px; font-weight: 800; font-style: italic; color: rgba(255,255,255,0.15); letter-spacing: 1px; pointer-events: none;">BRI</span>
+                </div>
+              </div>
+            </div>
+
             <h3 style="margin-bottom: 16px; color: var(--primary); font-family: var(--font-family-title);">1. Identitas Donatur</h3>
             
           <!-- Grid Nama & Asal & WA -->
@@ -1404,6 +1452,23 @@
       initFormSubmission();
       initModalActions();
       initStepWizard();
+      
+      // Copy account number helper
+      document.getElementById("btn-copy-acc").addEventListener("click", () => {
+        const accNum = "359401013441538";
+        navigator.clipboard.writeText(accNum).then(() => {
+          showToast("Nomor rekening berhasil disalin!", "success");
+        }).catch(err => {
+          // Fallback copy mechanism
+          const el = document.createElement('textarea');
+          el.value = accNum;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+          showToast("Nomor rekening berhasil disalin!", "success");
+        });
+      });
       
       // Set initial state
       selectNominalTier(25000);
