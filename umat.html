@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donasi & Ucapan HUT Paroki</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM (ROYAL NAVY & GOLD)
+       ========================================================================== */
+    :root {
+      --primary: #1e1b4b;       /* Deep Royal Navy */
+      --primary-hover: #312e81;
+      --gold: #bf953f;          /* Metallic Gold Base */
+      --gold-hover: #b58920;
+      --gold-light: #fcf6ba;
+      --white: #ffffff;
+      --bg-app: #fafaf9;        /* Warm Stone light background */
+      
+      /* Neutral colors */
+      --gray-50: #f8f8f7;
+      --gray-100: #f5f5f4;
+      --gray-200: #e7e5e4;
+      --gray-300: #d6d3d1;
+      --gray-400: #a8a29e;
+      --gray-500: #78716c;
+      --gray-700: #44403c;
+      --gray-800: #292524;
+      
+      /* Status colors */
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+      --danger: #b91c1c;
+      --info: #0369a1;
+      --info-bg: #f0f9ff;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      
+      /* Typography */
+      --font-family-body: 'Outfit', sans-serif;
+      --font-family-title: 'Marcellus', serif;
+      
+      /* Layout & Shadows */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --shadow-normal: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+      --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family-body);
+      background-color: var(--bg-app);
+      color: var(--gray-800);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(191, 149, 63, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(30, 27, 75, 0.04) 0px, transparent 50%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      flex: 1;
+    }
+
+    /* ==========================================================================
+       HEADER & BRANDING
+       ========================================================================== */
+    .app-header {
+      text-align: center;
+      margin-bottom: 32px;
+      margin-top: 16px;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary) 0%, #111827 100%);
+      border: 3px solid var(--gold);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 25px -5px rgba(30, 27, 75, 0.2);
+      color: var(--gold);
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .app-header h1 {
+      font-family: var(--font-family-title);
+      color: var(--primary);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .app-header p {
+      color: var(--gray-500);
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       CARD & FORM DESIGN
+       ========================================================================== */
+    .card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(191, 149, 63, 0.12);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .card-header {
+      background: linear-gradient(to right, var(--primary) 0%, #111827 100%);
+      padding: 24px;
+      color: var(--white);
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .card-header h2 {
+      font-family: var(--font-family-title);
+      font-size: 20px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .card-header p {
+      font-size: 12.5px;
+      color: var(--gray-300);
+      font-weight: 300;
+    }
+
+    .card-body {
+      padding: 32px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Form Fields */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .required {
+      color: var(--danger);
+      margin-left: 2px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400);
+      font-size: 16px;
+      transition: var(--transition-normal);
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      font-family: var(--font-family-body);
+      font-size: 15px;
+      color: var(--gray-800);
+      background-color: var(--white);
+      transition: var(--transition-normal);
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(191, 149, 63, 0.15);
+    }
+
+    input:focus + .input-icon,
+    textarea:focus + .input-icon {
+      color: var(--gold);
+    }
+
+    /* Textarea Customizing */
+    .label-with-counter {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .char-counter {
+      font-size: 11px;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+      padding-left: 16px;
+    }
+
+    /* =style.css gold cards selector= */
+    .tier-label-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .tier-card {
+      border: 2px solid rgba(181, 137, 32, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      background: linear-gradient(to bottom, #ffffff 0%, #fffdf9 100%);
+      transition: var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 10px rgba(181, 137, 32, 0.04);
+    }
+
+    .tier-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -5px rgba(181, 137, 32, 0.2), 0 0 15px 1px rgba(181, 137, 32, 0.1);
+    }
+
+    .tier-card.active {
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      border-color: #bf953f;
+      box-shadow: 0 12px 28px -5px rgba(181, 137, 32, 0.45), 0 0 20px 2px rgba(181, 137, 32, 0.25);
+      color: #451a03;
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #fdf6e2;
+      color: #854d0e;
+      border: 1px solid rgba(181, 137, 32, 0.3);
+      padding: 3px 8px;
+      font-size: 9px;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      font-family: var(--font-family-title);
+      text-transform: uppercase;
+    }
+
+    .tier-card.active .tier-badge {
+      background-color: #451a03;
+      color: #fcf6ba;
+      border-color: #451a03;
+    }
+
+    .tier-icon {
+      font-size: 24px;
+      color: var(--gold);
+      margin-top: 8px;
+      margin-bottom: 10px;
+      transition: var(--transition-fast);
+    }
+
+    .tier-card.active .tier-icon {
+      color: #451a03;
+      transform: scale(1.1);
+    }
+
+    .tier-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .tier-card.active .tier-title {
+      color: #451a03;
+      font-weight: 800;
+    }
+
+    .tier-price {
+      font-family: var(--font-family-title);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--gold-hover);
+      margin-bottom: 6px;
+    }
+
+    .tier-card.active .tier-price {
+      color: #451a03;
+    }
+
+    .tier-desc {
+      font-size: 10.5px;
+      color: var(--gray-500);
+      line-height: 1.3;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+
+    .tier-card.active .tier-desc {
+      color: #5c2000;
+    }
+
+    .tier-layout-preview {
+      display: flex;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .a5-box {
+      width: 50px;
+      height: 70px;
+      border: 1.5px solid rgba(181, 137, 32, 0.35);
+      background-color: #fffdf9;
+      border-radius: 4px;
+      padding: 3px;
+      display: grid;
+      gap: 2px;
+    }
+
+    .tier-card.active .a5-box {
+      border-color: #451a03;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Layout mini grid representations */
+    [data-nominal="25000"] .a5-box { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 1fr); }
+    [data-nominal="50000"] .a5-box { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
+    [data-nominal="100000"] .a5-box { grid-template-columns: 1fr; grid-template-rows: repeat(2, 1fr); }
+    [data-nominal="200000"] .a5-box { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+
+    .a5-part {
+      background-color: #f5f5f4;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+      font-weight: 700;
+      color: var(--gray-400);
+    }
+
+    .a5-part.active {
+      background-color: var(--gold);
+      color: var(--white);
+    }
+
+    .tier-card.active .a5-part {
+      background-color: rgba(69, 26, 3, 0.1);
+      color: #451a03;
+    }
+
+    .tier-card.active .a5-part.active {
+      background-color: #451a03;
+      color: #fcf6ba;
+    }
+
+    /* Custom Nominal Field */
+    .custom-nominal-container {
+      max-width: 320px;
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+       FILE UPLOAD AREAS
+       ========================================================================== */
+    .upload-zone {
+      border: 2px dashed var(--gray-300);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      background-color: var(--gray-50);
+      transition: var(--transition-normal);
+      position: relative;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--gold);
+      background-color: #fffdf9;
+    }
+
+    .upload-zone.dragover {
+      border-color: var(--primary);
+      background-color: rgba(30, 27, 75, 0.02);
+    }
+
+    .upload-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upload-prompt i {
+      font-size: 32px;
+      color: var(--gray-400);
+    }
+
+    .upload-zone:hover .upload-prompt i {
+      color: var(--gold);
+    }
+
+    .upload-prompt span {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .upload-prompt p {
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    /* Upload Preview */
+    .upload-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .img-preview-frame {
+      max-width: 150px;
+      max-height: 150px;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background-color: var(--white);
+      box-shadow: var(--shadow-normal);
+    }
+
+    .img-preview-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .file-details {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--gray-100);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 11.5px;
+      color: var(--gray-700);
+      max-width: 100%;
+    }
+
+    .file-details span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-remove-file {
+      background: none;
+      border: none;
+      color: var(--danger);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px;
+    }
+
+    /* ==========================================================================
+       BUTTONS
+       ========================================================================== */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-hover) 100%);
+      color: var(--white);
+      border: none;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-family-body);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      box-shadow: 0 4px 15px rgba(191, 149, 63, 0.3);
+      transition: var(--transition-normal);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--gold-hover) 0%, #aa771c 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(191, 149, 63, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary:disabled {
+      background: var(--gray-300);
+      color: var(--gray-500);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ==========================================================================
+       MODAL SYSTEM (DIGITAL TICKET RECEIPT)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(30, 27, 75, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-normal);
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transform: scale(0.9);
+      transition: var(--transition-normal);
+      overflow: hidden;
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: scale(1);
+    }
+
+    /* Receipt Ticket Shapes */
+    .ticket-wrapper {
+      padding: 24px;
+      position: relative;
+    }
+
+    .ticket {
+      background-color: #fffdf8;
+      border: 2px dashed #e4d8bc;
+      border-radius: 12px;
+      padding: 28px 24px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .ticket::before,
+    .ticket::after {
+      content: "";
+      position: absolute;
+      top: 60px;
+      width: 16px;
+      height: 16px;
+      background-color: var(--white);
+      border-radius: 50%;
+      border: 2px solid #e4d8bc;
+      z-index: 5;
+    }
+
+    .ticket::before {
+      left: -9px;
+      border-left-color: transparent;
+      border-top-color: transparent;
+      transform: rotate(45deg);
+    }
+
+    .ticket::after {
+      right: -9px;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(45deg);
+    }
+
+    .ticket-header {
+      text-align: center;
+      border-bottom: 2px dashed var(--gray-200);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .ticket-header i {
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .ticket-header h3 {
+      font-family: var(--font-family-title);
+      color: var(--primary);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .ticket-header .status-tag {
+      display: inline-block;
+      background-color: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid rgba(180, 83, 9, 0.3);
+      padding: 3px 12px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .ticket-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ticket-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .ticket-label {
+      font-size: 11px;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .ticket-value {
+      font-size: 13.5px;
+      color: var(--gray-800);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .ticket-row.nominal-row {
+      background-color: var(--gray-50);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      margin: 8px 0;
+    }
+
+    .ticket-row.nominal-row .ticket-value {
+      color: var(--gold-hover);
+      font-size: 18px;
+      font-family: var(--font-family-title);
+    }
+
+    .ticket-message-box {
+      border-top: 1.5px solid var(--gray-200);
+      padding-top: 14px;
+      margin-top: 8px;
+    }
+
+    .ticket-message-label {
+      font-size: 10.5px;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .ticket-message-content {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--gray-600);
+      line-height: 1.4;
+      background-color: #fafaf9;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .modal-actions {
+      display: flex;
+      padding: 0 24px 24px;
+      gap: 10px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      padding: 10px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-family: var(--font-family-body);
+      transition: var(--transition-normal);
+    }
+
+    .btn-modal-close {
+      background-color: var(--gray-100);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+    }
+
+    .btn-modal-close:hover {
+      background-color: var(--gray-200);
+    }
+
+    .btn-modal-print {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-modal-print:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* ==========================================================================
+       TOAST ALERTS
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1100;
+    }
+
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid var(--gray-400);
+      font-size: 13.5px;
+      color: var(--gray-800);
+      font-weight: 600;
+      min-width: 280px;
+      max-width: 400px;
+      animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      transition: var(--transition-normal);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .toast.success { border-left-color: var(--success); }
+    .toast.success i { color: var(--success); }
+    .toast.error { border-left-color: var(--danger); }
+    .toast.error i { color: var(--danger); }
+    .toast.info { border-left-color: var(--info); }
+    .toast.info i { color: var(--info); }
+    .toast.warning { border-left-color: var(--warning); }
+    .toast.warning i { color: var(--warning); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--gray-400);
+      font-size: 12px;
+      border-top: 1px solid var(--gray-200);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-container">
+        <i class="fa-solid fa-church"></i>
+      </div>
+      <h1>Donasi & Ucapan HUT Paroki</h1>
+      <p>Salurkan donasi Anda serta kirimkan ucapan selamat HUT Paroki yang akan dicetak pada Buku Misa khusus.</p>
+    </header>
+
+    <!-- Main Card -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Formulir Pendaftaran Mandiri</h2>
+        <p>Silakan isi detail data di bawah ini dan lampirkan bukti transfer Anda secara valid.</p>
+      </div>
+      
+      <div class="card-body">
+        <form id="donation-form">
+          
+          <!-- Grid Nama & Asal & WA -->
+          <div class="form-grid">
+            <!-- Nama Donatur -->
+            <div class="form-group">
+              <label for="donor-name">Nama Donatur <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="donor-name" placeholder="Nama pribadi, keluarga, atau instansi" required>
+              </div>
+            </div>
+            
+            <!-- Lingkungan / Asal -->
+            <div class="form-group">
+              <label for="donor-origin">Asal / Lingkungan / Nama Usaha <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-map-location-dot input-icon"></i>
+                <input type="text" id="donor-origin" placeholder="Nama lingkungan, stasi, paroki, atau nama usaha" required>
+              </div>
+            </div>
+
+            <!-- Nomor WhatsApp -->
+            <div class="form-group">
+              <label for="donor-phone">Nomor WhatsApp / HP <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-phone input-icon"></i>
+                <input type="tel" id="donor-phone" placeholder="Misal: 08123456789" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pilihan Nominal (Tiers) -->
+          <div class="tier-label-group">
+            <label style="font-size: 13.5px; font-weight: 600; color: var(--gray-700); text-transform: uppercase; letter-spacing: 0.5px;">Pilih Paket Donasi <span class="required">*</span></label>
+            
+            <div class="tier-grid">
+              <!-- Tier 1: Perunggu -->
+              <div class="tier-card active" data-nominal="25000">
+                <span class="tier-badge">1/8 A5</span>
+                <div class="tier-icon"><i class="fa-solid fa-star"></i></div>
+                <div class="tier-title">Perunggu</div>
+                <div class="tier-price">Rp 25.000</div>
+                <div class="tier-desc">Hanya teks ucapan (tanpa foto). Jatah kotak 1/8 A5.</div>
+                <div class="tier-layout-preview">
+                  <div class="a5-box">
+                    <div class="a5-part active">1</div>
+                    <div class="a5-part">2</div>
+                    <div class="a5-part">3</div>
+                    <div class="a5-part">4</div>
+                    <div class="a5-part">5</div>
+                    <div class="a5-part">6</div>
+                    <div class="a5-part">7</div>
+                    <div class="a5-part">8</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tier 2: Perak -->
+              <div class="tier-card" data-nominal="50000">
+                <span class="tier-badge">1/4 A5</span>
+                <div class="tier-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="tier-title">Perak</div>
+                <div class="tier-price">Rp 50.000</div>
+                <div class="tier-desc">Teks ucapan & 1 Foto keluarga. Jatah kotak 1/4 A5.</div>
+                <div class="tier-layout-preview">
+                  <div class="a5-box">
+                    <div class="a5-part active">1</div>
+                    <div class="a5-part">2</div>
+                    <div class="a5-part">3</div>
+                    <div class="a5-part">4</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tier 3: Emas -->
+              <div class="tier-card" data-nominal="100000">
+                <span class="tier-badge">1/2 A5</span>
+                <div class="tier-icon"><i class="fa-solid fa-medal"></i></div>
+                <div class="tier-title">Emas</div>
+                <div class="tier-price">Rp 100.000</div>
+                <div class="tier-desc">Teks ucapan & 1 Foto landscape. Jatah kotak 1/2 A5.</div>
+                <div class="tier-layout-preview">
+                  <div class="a5-box">
+                    <div class="a5-part active">1</div>
+                    <div class="a5-part">2</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tier 4: Utama -->
+              <div class="tier-card" data-nominal="200000">
+                <span class="tier-badge">1 A5</span>
+                <div class="tier-icon"><i class="fa-solid fa-crown"></i></div>
+                <div class="tier-title">Utama</div>
+                <div class="tier-price">Rp 200.000+</div>
+                <div class="tier-desc">Teks bebas & 1 Foto besar. Jatah 1 Halaman A5 Penuh.</div>
+                <div class="tier-layout-preview">
+                  <div class="a5-box">
+                    <div class="a5-part active">A5</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Custom Nominal Input (Hidden by default, shown for Platinum) -->
+            <div id="custom-nominal-group" class="form-group custom-nominal-container hidden">
+              <label for="donor-nominal-custom">Nominal Donasi Khusus (Rp) <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-rupiah-sign input-icon"></i>
+                <input type="number" id="donor-nominal-custom" placeholder="Nominal minimal 200000" min="200000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Ucapan Selamat -->
+          <div class="form-group">
+            <div class="label-with-counter">
+              <label for="donor-message">Ucapan Selamat HUT Paroki <span class="required">*</span></label>
+              <span class="char-counter" id="char-counter">0 / 60 Karakter</span>
+            </div>
+            <textarea id="donor-message" placeholder="Tuliskan ucapan selamat Anda di sini..." required></textarea>
+          </div>
+
+          <!-- Wajib Upload Bukti Transfer -->
+          <div class="form-group">
+            <label>Unggah Bukti Transfer <span class="required">*</span></label>
+            <div class="upload-zone" id="upload-bukti-zone">
+              <input type="file" id="donor-bukti" accept="image/*" style="display: none;">
+              <div class="upload-prompt" id="bukti-prompt">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Klik atau Tarik Bukti Transfer ke sini</span>
+                <p>Mendukung format PNG, JPG, JPEG (Maks. 10MB)</p>
+              </div>
+              <div class="upload-preview hidden" id="bukti-preview-container">
+                <div class="img-preview-frame">
+                  <img id="bukti-img-preview" src="" alt="Bukti Preview">
+                </div>
+                <div class="file-details">
+                  <i class="fa-solid fa-image"></i>
+                  <span id="bukti-file-name">filename.jpg</span>
+                  <button type="button" class="btn-remove-file" id="btn-remove-bukti" title="Hapus Bukti">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Foto Keluarga/Donatur (Opsional, Muncul jika nominal >= 50.000) -->
+          <div class="form-group hidden" id="photo-upload-group">
+            <label>Unggah Foto Donatur / Keluarga <span class="required" id="photo-required-indicator">*</span></label>
+            <p style="font-size: 11px; color: var(--gray-500); margin-top:-4px; margin-bottom:4px;">Foto ini akan dicetak di dalam Buku Misa di sebelah teks ucapan Anda.</p>
+            <div class="upload-zone" id="upload-photo-zone">
+              <input type="file" id="donor-photo" accept="image/*" style="display: none;">
+              <div class="upload-prompt" id="photo-prompt">
+                <i class="fa-solid fa-images"></i>
+                <span>Klik atau Tarik Foto Keluarga ke sini</span>
+                <p>Kualitas foto asli / resolusi tinggi sangat disarankan (Maks. 15MB)</p>
+              </div>
+              <div class="upload-preview hidden" id="photo-preview-container">
+                <div class="img-preview-frame">
+                  <img id="photo-img-preview" src="" alt="Foto Preview">
+                </div>
+                <div class="file-details">
+                  <i class="fa-solid fa-image"></i>
+                  <span id="photo-file-name">filename.jpg</span>
+                  <button type="button" class="btn-remove-file" id="btn-remove-photo" title="Hapus Foto">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary" id="btn-submit">
+            <span class="btn-text">Kirim Pendaftaran Donasi</span>
+            <i class="fa-solid fa-paper-plane btn-icon"></i>
+          </button>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Panitia HUT Paroki. Seluruh hak cipta dilindungi.</p>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL RECEIPT TICKET (BUKTI KIRIM)
+       ========================================================================== -->
+  <div class="modal-overlay" id="receipt-modal">
+    <div class="modal-container">
+      <div class="ticket-wrapper">
+        <div class="ticket" id="print-ticket-content">
+          
+          <div class="ticket-header">
+            <i class="fa-solid fa-circle-check" style="color: var(--warning); font-size:32px;"></i>
+            <h3>Bukti Kirim Donasi</h3>
+            <span class="status-tag">Menunggu Verifikasi</span>
+          </div>
+
+          <div class="ticket-details">
+            <div class="ticket-row">
+              <span class="ticket-label">Nama Donatur</span>
+              <span class="ticket-value" id="receipt-name">-</span>
+            </div>
+            
+            <div class="ticket-row">
+              <span class="ticket-label">Asal / Lingkungan</span>
+              <span class="ticket-value" id="receipt-origin">-</span>
+            </div>
+
+            <div class="ticket-row">
+              <span class="ticket-label">No. WhatsApp</span>
+              <span class="ticket-value" id="receipt-phone">-</span>
+            </div>
+            
+            <div class="ticket-row">
+              <span class="ticket-label">Waktu Kirim</span>
+              <span class="ticket-value" id="receipt-time">-</span>
+            </div>
+
+            <div class="ticket-row">
+              <span class="ticket-label">Paket Pilihan</span>
+              <span class="ticket-value" id="receipt-tier">-</span>
+            </div>
+
+            <div class="ticket-row nominal-row">
+              <span class="ticket-label">Nominal</span>
+              <span class="ticket-value" id="receipt-nominal">Rp 0</span>
+            </div>
+
+            <div class="ticket-message-box">
+              <div class="ticket-message-label">Ucapan Selamat</div>
+              <div class="ticket-message-content" id="receipt-message">-</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-modal-close" id="btn-close-modal">Tutup</button>
+        <button type="button" class="btn-modal-print" id="btn-print-receipt">
+          <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC
+       ========================================================================== */ -->
+  <script>
+    // ==========================================================================
+    // CONFIGURATION
+    // PASTE URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
+    // ==========================================================================
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxHbYQI45NRpwsbtAQepOfFvp0QCfzsBCOTJnpGkOU923Va2ZeD_9_7IM25Bo0PM35r/exec";
+
+    // App State
+    const state = {
+      selectedNominal: 25000,
+      charLimit: 60,
+      buktiData: null,
+      buktiNama: "",
+      buktiTipe: "",
+      fotoData: null,
+      fotoNama: "",
+      fotoTipe: ""
+    };
+
+    // DOM Elements
+    const dom = {
+      form: document.getElementById("donation-form"),
+      donorName: document.getElementById("donor-name"),
+      donorOrigin: document.getElementById("donor-origin"),
+      donorPhone: document.getElementById("donor-phone"),
+      tierCards: document.querySelectorAll(".tier-card"),
+      customNominalGroup: document.getElementById("custom-nominal-group"),
+      customNominalInput: document.getElementById("donor-nominal-custom"),
+      donorMessage: document.getElementById("donor-message"),
+      charCounter: document.getElementById("char-counter"),
+      
+      // Bukti upload
+      uploadBuktiZone: document.getElementById("upload-bukti-zone"),
+      donorBukti: document.getElementById("donor-bukti"),
+      buktiPrompt: document.getElementById("bukti-prompt"),
+      buktiPreviewContainer: document.getElementById("bukti-preview-container"),
+      buktiImgPreview: document.getElementById("bukti-img-preview"),
+      buktiFileName: document.getElementById("bukti-file-name"),
+      btnRemoveBukti: document.getElementById("btn-remove-bukti"),
+      
+      // Foto upload
+      photoUploadGroup: document.getElementById("photo-upload-group"),
+      uploadPhotoZone: document.getElementById("upload-photo-zone"),
+      donorPhoto: document.getElementById("donor-photo"),
+      photoPrompt: document.getElementById("photo-prompt"),
+      photoPreviewContainer: document.getElementById("photo-preview-container"),
+      photoImgPreview: document.getElementById("photo-img-preview"),
+      photoFileName: document.getElementById("photo-file-name"),
+      btnRemovePhoto: document.getElementById("btn-remove-photo"),
+      
+      // submit & dialogs
+      btnSubmit: document.getElementById("btn-submit"),
+      toastContainer: document.getElementById("toast-container"),
+      receiptModal: document.getElementById("receipt-modal"),
+      btnCloseModal: document.getElementById("btn-close-modal"),
+      btnPrintReceipt: document.getElementById("btn-print-receipt"),
+      
+      // receipt values
+      receiptName: document.getElementById("receipt-name"),
+      receiptOrigin: document.getElementById("receipt-origin"),
+      receiptPhone: document.getElementById("receipt-phone"),
+      receiptTime: document.getElementById("receipt-time"),
+      receiptTier: document.getElementById("receipt-tier"),
+      receiptNominal: document.getElementById("receipt-nominal"),
+      receiptMessage: document.getElementById("receipt-message")
+    };
+
+    // Initialize Event Listeners
+    window.addEventListener("DOMContentLoaded", () => {
+      initTierSelectors();
+      initMessageCounter();
+      initUploadZone(dom.uploadBuktiZone, dom.donorBukti, "bukti");
+      initUploadZone(dom.uploadPhotoZone, dom.donorPhoto, "foto");
+      initFormSubmission();
+      initModalActions();
+      
+      // Set initial state
+      selectNominalTier(25000);
+    });
+
+    // ==========================================================================
+    // TIER SELECTION WORKFLOW
+    // ==========================================================================
+    function initTierSelectors() {
+      dom.tierCards.forEach(card => {
+        card.addEventListener("click", () => {
+          const nominal = parseInt(card.getAttribute("data-nominal"));
+          selectNominalTier(nominal, card);
+        });
+      });
+      
+      dom.customNominalInput.addEventListener("input", (e) => {
+        const val = parseInt(e.target.value) || 0;
+        state.selectedNominal = val;
+      });
+    }
+
+    function selectNominalTier(nominal, selectedCard = null) {
+      state.selectedNominal = nominal;
+      
+      // If no card was passed, find it in the DOM
+      if (!selectedCard) {
+        selectedCard = Array.from(dom.tierCards).find(c => parseInt(c.getAttribute("data-nominal")) === nominal);
+      }
+      
+      // Deactivate all cards
+      dom.tierCards.forEach(card => card.classList.remove("active"));
+      
+      if (selectedCard) {
+        selectedCard.classList.add("active");
+      }
+      
+      // Handle custom nominal input visibility
+      if (nominal >= 200000) {
+        dom.customNominalGroup.classList.remove("hidden");
+        dom.customNominalInput.setAttribute("required", "required");
+        const curCustomVal = parseInt(dom.customNominalInput.value) || 0;
+        state.selectedNominal = curCustomVal >= 200000 ? curCustomVal : 200000;
+      } else {
+        dom.customNominalGroup.classList.add("hidden");
+        dom.customNominalInput.removeAttribute("required");
+      }
+
+      // Configure photo upload field requirements based on selected package
+      if (nominal >= 50000) {
+        dom.photoUploadGroup.classList.remove("hidden");
+        dom.donorPhoto.setAttribute("required", "required"); // make photo mandatory for Perak, Emas, Utama
+        document.getElementById("photo-required-indicator").classList.remove("hidden");
+      } else {
+        dom.photoUploadGroup.classList.add("hidden");
+        dom.donorPhoto.removeAttribute("required");
+        clearPhotoUpload();
+      }
+
+      // Configure character limits
+      if (nominal >= 200000) {
+        state.charLimit = 250;
+      } else if (nominal >= 100000) {
+        state.charLimit = 120;
+      } else if (nominal >= 50000) {
+        state.charLimit = 80;
+      } else {
+        state.charLimit = 60;
+      }
+      
+      // Update warning/counter text
+      updateMessageCounter(dom.donorMessage.value);
+    }
+
+    // ==========================================================================
+    // TEXT COUNTER
+    // ==========================================================================
+    function initMessageCounter() {
+      dom.donorMessage.addEventListener("input", (e) => {
+        updateMessageCounter(e.target.value);
+      });
+    }
+
+    function updateMessageCounter(text) {
+      const length = text.length;
+      dom.charCounter.textContent = `${length} / ${state.charLimit} Karakter`;
+      
+      if (length > state.charLimit) {
+        dom.charCounter.style.color = "var(--danger)";
+        dom.donorMessage.setCustomValidity(`Ucapan melebihi batas ${state.charLimit} karakter untuk paket ini!`);
+      } else {
+        dom.charCounter.style.color = "var(--gray-400)";
+        dom.donorMessage.setCustomValidity("");
+      }
+    }
+
+    // ==========================================================================
+    // UPLOAD ZONE SYSTEM
+    // ==========================================================================
+    function initUploadZone(zone, input, fileKey) {
+      // Trigger file selector when clicking zone
+      zone.addEventListener("click", (e) => {
+        // Prevent infinite loop if clicking a button inside
+        if (e.target.closest(".btn-remove-file")) return;
+        input.click();
+      });
+      
+      // Drag events
+      zone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        zone.classList.add("dragover");
+      });
+      
+      zone.addEventListener("dragleave", () => {
+        zone.classList.remove("dragover");
+      });
+      
+      zone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        zone.classList.remove("dragover");
+        if (e.dataTransfer.files.length > 0) {
+          processFile(e.dataTransfer.files[0], fileKey);
+        }
+      });
+      
+      input.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) {
+          processFile(e.target.files[0], fileKey);
+        }
+      });
+    }
+
+    function processFile(file, key) {
+      if (!file.type.startsWith("image/")) {
+        showToast("Hanya gambar yang diperbolehkan!", "error");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64Data = e.target.result;
+        
+        if (key === "bukti") {
+          state.buktiData = base64Data;
+          state.buktiNama = file.name;
+          state.buktiTipe = file.type;
+          
+          dom.buktiImgPreview.src = base64Data;
+          dom.buktiFileName.textContent = file.name;
+          dom.buktiPrompt.classList.add("hidden");
+          dom.buktiPreviewContainer.classList.remove("hidden");
+        } else {
+          state.fotoData = base64Data;
+          state.fotoNama = file.name;
+          state.fotoTipe = file.type;
+          
+          dom.photoImgPreview.src = base64Data;
+          dom.photoFileName.textContent = file.name;
+          dom.photoPrompt.classList.add("hidden");
+          dom.photoPreviewContainer.classList.remove("hidden");
+        }
+        showToast("File berhasil dimuat!", "success");
+      };
+      
+      reader.readAsDataURL(file);
+    }
+
+    // Clear Foto
+    dom.btnRemovePhoto.addEventListener("click", () => {
+      clearPhotoUpload();
+    });
+
+    function clearPhotoUpload() {
+      state.fotoData = null;
+      state.fotoNama = "";
+      state.fotoTipe = "";
+      dom.donorPhoto.value = "";
+      dom.photoImgPreview.src = "";
+      dom.photoPreviewContainer.classList.add("hidden");
+      dom.photoPrompt.classList.remove("hidden");
+    }
+
+    // Clear Bukti
+    dom.btnRemoveBukti.addEventListener("click", () => {
+      clearBuktiUpload();
+    });
+
+    function clearBuktiUpload() {
+      state.buktiData = null;
+      state.buktiNama = "";
+      state.buktiTipe = "";
+      dom.donorBukti.value = "";
+      dom.buktiImgPreview.src = "";
+      dom.buktiPreviewContainer.classList.add("hidden");
+      dom.buktiPrompt.classList.remove("hidden");
+    }
+
+    // ==========================================================================
+    // TOAST NOTIFICATIONS
+    // ==========================================================================
+    function showToast(message, type = "info") {
+      const toast = document.createElement("div");
+      toast.className = `toast ${type}`;
+      
+      let icon = "fa-info-circle";
+      if (type === "success") icon = "fa-check-circle";
+      if (type === "error") icon = "fa-circle-xmark";
+      if (type === "warning") icon = "fa-triangle-exclamation";
+      
+      toast.innerHTML = `
+        <i class="fa-solid ${icon}"></i>
+        <span>${message}</span>
+      `;
+      
+      dom.toastContainer.appendChild(toast);
+      
+      // Auto dismiss
+      setTimeout(() => {
+        toast.style.transform = "translateX(120%)";
+        toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // ==========================================================================
+    // FORM SUBMISSION
+    // ==========================================================================
+    function initFormSubmission() {
+      dom.form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE")) {
+          showToast("Aplikasi belum siap. Konfigurasi URL Google Apps Script belum dilakukan oleh pengurus web.", "error");
+          return;
+        }
+
+        // Validate Bukti Transfer Wajib
+        if (!state.buktiData) {
+          showToast("Bukti Transfer wajib diunggah sebagai tanda sah!", "error");
+          dom.uploadBuktiZone.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+
+        // Validate Foto Wajib untuk Perak ke atas
+        if (state.selectedNominal >= 50000 && !state.fotoData) {
+          showToast("Foto wajib diunggah untuk paket Perak, Emas, dan Utama!", "error");
+          dom.photoUploadGroup.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+
+        // Set Loading State
+        dom.btnSubmit.disabled = true;
+        dom.btnSubmit.innerHTML = '<span>Mengirim Pendaftaran...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+        showToast("Mengirim data & file ke server...", "info");
+
+        // Construct nominal
+        let nominal = state.selectedNominal;
+        if (nominal >= 200000) {
+          const val = parseInt(dom.customNominalInput.value) || 0;
+          nominal = val >= 200000 ? val : 200000;
+        }
+
+        const payload = {
+          action: "submitOnlinePending",
+          nama: dom.donorName.value.trim(),
+          lingkungan: dom.donorOrigin.value.trim(),
+          whatsapp: dom.donorPhone.value.trim(),
+          nominal: nominal,
+          ucapan: dom.donorMessage.value.trim(),
+          buktiData: state.buktiData,
+          buktiNama: state.buktiNama,
+          buktiTipe: state.buktiTipe,
+          fotoData: state.fotoData,
+          fotoNama: state.fotoNama,
+          fotoTipe: state.fotoTipe
+        };
+
+        try {
+          const response = await fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const result = await response.json();
+
+          if (result.success) {
+            showToast("Pendaftaran berhasil terkirim!", "success");
+            
+            // Show Receipt Modal
+            showReceipt(payload);
+            
+            // Reset form
+            dom.form.reset();
+            clearPhotoUpload();
+            clearBuktiUpload();
+            selectNominalTier(25000);
+          } else {
+            showToast("Gagal mengirim data: " + result.error, "error");
+          }
+        } catch (err) {
+          console.error("Form submit error:", err);
+          showToast("Koneksi gagal: " + err.message, "error");
+        } finally {
+          dom.btnSubmit.disabled = false;
+          dom.btnSubmit.innerHTML = '<span class="btn-text">Kirim Pendaftaran Donasi</span> <i class="fa-solid fa-paper-plane btn-icon"></i>';
+        }
+      });
+    }
+
+    // ==========================================================================
+    // RECEIPT MODAL & PRINTING
+    // ==========================================================================
+    function initModalActions() {
+      dom.btnCloseModal.addEventListener("click", () => {
+        dom.receiptModal.classList.remove("active");
+      });
+      
+      dom.btnPrintReceipt.addEventListener("click", () => {
+        printReceiptTicket();
+      });
+    }
+
+    function showReceipt(payload) {
+      dom.receiptName.textContent = payload.nama;
+      dom.receiptOrigin.textContent = payload.lingkungan;
+      dom.receiptPhone.textContent = payload.whatsapp;
+      
+      const now = new Date();
+      dom.receiptTime.textContent = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} WIB`;
+      
+      let tierName = "Perunggu";
+      if (payload.nominal >= 200000) tierName = "Utama";
+      else if (payload.nominal >= 100000) tierName = "Emas";
+      else if (payload.nominal >= 50000) tierName = "Perak";
+      
+      dom.receiptTier.textContent = tierName;
+      dom.receiptNominal.textContent = "Rp " + payload.nominal.toLocaleString("id-ID");
+      dom.receiptMessage.textContent = payload.ucapan;
+      
+      // Activate Modal
+      dom.receiptModal.classList.add("active");
+    }
+
+    function printReceiptTicket() {
+      const name = dom.receiptName.textContent;
+      const origin = dom.receiptOrigin.textContent;
+      const phone = dom.receiptPhone.textContent;
+      const time = dom.receiptTime.textContent;
+      const tier = dom.receiptTier.textContent;
+      const nominal = dom.receiptNominal.textContent;
+      const message = dom.receiptMessage.textContent;
+
+      const printWindow = window.open("", "_blank");
+      printWindow.document.write(`
+        <html>
+        <head>
+          <title>Bukti Kirim Donasi - ${name}</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+          <style>
+            body {
+              font-family: 'Outfit', sans-serif;
+              background-color: #ffffff;
+              color: #292524;
+              padding: 40px 20px;
+              display: flex;
+              justify-content: center;
+            }
+            .ticket {
+              width: 100%;
+              max-width: 420px;
+              border: 2px dashed #bf953f;
+              border-radius: 12px;
+              padding: 30px;
+              background-color: #fffdf8;
+              box-sizing: border-box;
+            }
+            .ticket-header {
+              text-align: center;
+              border-bottom: 2px dashed #e7e5e4;
+              padding-bottom: 16px;
+              margin-bottom: 20px;
+            }
+            .ticket-header h3 {
+              font-family: 'Marcellus', serif;
+              font-size: 20px;
+              color: #1e1b4b;
+              margin: 8px 0 4px 0;
+            }
+            .status-tag {
+              display: inline-block;
+              background-color: #fef3c7;
+              color: #b45309;
+              border: 1px solid rgba(180, 83, 9, 0.3);
+              padding: 3px 12px;
+              border-radius: 9999px;
+              font-size: 10px;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.8px;
+            }
+            .ticket-row {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 12px;
+              font-size: 13.5px;
+            }
+            .label {
+              color: #78716c;
+              text-transform: uppercase;
+              font-size: 11px;
+              font-weight: 600;
+            }
+            .value {
+              font-weight: 600;
+              text-align: right;
+            }
+            .nominal-row {
+              background-color: #f5f5f4;
+              padding: 10px 12px;
+              border-radius: 6px;
+              border: 1px solid #e7e5e4;
+              margin: 16px 0;
+            }
+            .nominal-row .value {
+              color: #b58920;
+              font-size: 18px;
+              font-family: 'Marcellus', serif;
+            }
+            .message-box {
+              border-top: 1.5px solid #e7e5e4;
+              padding-top: 14px;
+              margin-top: 8px;
+            }
+            .message-label {
+              font-size: 10.5px;
+              color: #78716c;
+              text-transform: uppercase;
+              font-weight: 600;
+              margin-bottom: 6px;
+            }
+            .message-content {
+              font-size: 12px;
+              font-style: italic;
+              color: #44403c;
+              line-height: 1.4;
+              background-color: #fafaf9;
+              padding: 10px;
+              border-radius: 6px;
+            }
+            .print-btn-container {
+              display: flex;
+              justify-content: center;
+              margin-top: 24px;
+            }
+            button {
+              background-color: #1e1b4b;
+              color: #ffffff;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 6px;
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+            }
+            @media print {
+              .print-btn-container {
+                display: none;
+              }
+              body {
+                padding: 0;
+              }
+              .ticket {
+                border-style: solid;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="ticket">
+            <div class="ticket-header">
+              <h3>BUKTI KIRIM DONASI</h3>
+              <span class="status-tag">Menunggu Verifikasi</span>
+            </div>
+            <div class="ticket-row">
+              <span class="label">Nama Donatur</span>
+              <span class="value">${name}</span>
+            </div>
+            <div class="ticket-row">
+              <span class="label">Asal / Lingkungan</span>
+              <span class="value">${origin}</span>
+            </div>
+            <div class="ticket-row">
+              <span class="label">No. WhatsApp</span>
+              <span class="value">${phone}</span>
+            </div>
+            <div class="ticket-row">
+              <span class="label">Waktu Kirim</span>
+              <span class="value">${time}</span>
+            </div>
+            <div class="ticket-row">
+              <span class="label">Paket Pilihan</span>
+              <span class="value">${tier}</span>
+            </div>
+            <div class="ticket-row nominal-row">
+              <span class="label">Nominal</span>
+              <span class="value">${nominal}</span>
+            </div>
+            <div class="message-box">
+              <div class="message-label">Ucapan Selamat</div>
+              <div class="message-content">${message}</div>
+            </div>
+            <div class="print-btn-container">
+              <button onclick="window.print()">Cetak Halaman Ini</button>
+            </div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+  </script>
+</body>
+</html>
